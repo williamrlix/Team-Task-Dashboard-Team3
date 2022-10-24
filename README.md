@@ -158,5 +158,39 @@ return (
 
 
 # 3. What is two-way binding? Explain how the re-rendering is done when using two-way binding.  (Assume that there are parent component A and child component B.)
+
+Using props and state, we may bind data in React from one component to another. As a result, React components can exchange information and instantly update when the data changes. For example: state gets updated, the value is pushed to the history
+
+![1](https://user-images.githubusercontent.com/63656243/197559140-3c03e400-e2fc-4575-b1ef-ebb3932f03d2.png)
+
+and then when a history entry is selected, this entry is written back to the state.
+
+![2](https://user-images.githubusercontent.com/63656243/197559436-39252961-7605-4162-96a5-862c4863ffb7.png)
+
+
+
 # 4. Event listener should be removed when it’s called out. When component is disappered(=unmount) from the screen in class component, event listener is removed in componentWillUnmount. Then, how do you remove event listener in functional component where you can’t use the lifecycle method?
+
+Add the event listener in the useEffect hook and then return a function from the useEffect hook.After that, when the component unmounts, use the removeEventListener function to remove the event listener.
+
+# 5. Event listener should be removed when it’s called out. When component is disappered(=unmount) from the screen in class component, event listener is removed in componentWillUnmount. Then, how do you remove event listener in functional component where you can’t use the lifecycle method?
+
+because there’s a lot of class name, afraid that will call the wrong class. if using ref it would be specified. The fact that I can only access refs by design in the context where specify them is another benefit of utilizing refs. Therefore, if need to access information outside of this context, must use props, state, and possibly storage.
+And this is good because it reduces or eliminates the possibility that would break your unidirectional data flow, which would make code more difficult to manage.
+
+# 6. Explain SPA and MPA.
+Arguing about which of these two types of approaches is good and bad, will be endless, unfortunately. This is what is happening out there. In my opinion, determining which approach to use is wiser than being strict with just one kind of approach. To see which one fits the application needs, it is necessary to look at the advantages and disadvantages of these 2 types of implementation.
+
+MPA / traditional web approach , is more profitable on the side of Search Engine Optimization . This is because on each page, all elements or sections are updated and adjusted based on what is viewed and the content and content of the page. Another advantage of this method is that the development process tends to be faster but not necessarily organized. In addition, MPA has a good dependency advantage, where MPA does not depend on the client browser in the process of providing content because almost all page content is generated from the server side to be provided to the client.
+
+However, MPA has several weaknesses that have serious implications in many ways. The highlight is the unstoppable management of Resources. Websites will tend to be slower, not optimal in long-term website development, and lack of efficiency in UI/UX interface maintenance.
+
+SPA
+
+Basically, the shortcomings of MPA have been overcome by the existence of SPA. Various other benefits are the application of the MVC method into the UI design interface process, so that project maintenance becomes better and structured. Save resources so that the interconnection load on the user can be reduced, fully responsive and Mobile view oriented that can be applied easily.
+
+The drawback of the SPA method is the difficulty of SEO optimization. So most SPA methods are applied in applications that require intra-only access. This problem can be solved by using Nuxt.js, which we will discuss in a future article. SPA is also very dependent on the browser used by the client, so the optimization of the use of this method depends on the type and version of the browser.
+
+#. 7. Why there’s an error when you move to the page like spartacodingclub.com/login instead of spartacodingclub.com after deploying to s3 bucket?
+
 
